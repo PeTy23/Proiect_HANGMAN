@@ -4,7 +4,9 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include "interface.h"
-
+#include "normal_mode.h"
+#include "hard_mode.h"
+#include "versus_mode.h"
 int main() {
     Game game = {0};
 
@@ -21,8 +23,8 @@ int main() {
     bool running = true;
     while (running) {
         handle_events(&game);
-        
-        SDL_SetRenderDrawColor(game.renderer, 53, 214, 212, 255);
+
+        SDL_SetRenderDrawColor(game.renderer, 0, 0, 0, 255);
         SDL_RenderClear(game.renderer);
 
         switch (game.current_state) {
@@ -30,18 +32,14 @@ int main() {
                 render_main_menu(&game);
                 break;
             case NORMAL_MODE:
-                render_normal_mode(&game);
+                normal_mode_render(&game);
                 break;
             case HARD_MODE:
-                render_normal_mode(&game);
+                hard_mode_render(&game); 
                 break;
             case VERSUS_MODE:
-                render_normal_mode(&game);
+                versus_mode_render(&game); 
                 break;
-            case LANGUAGE:
-                render_normal_mode(&game);
-                break;
-
         }
 
         SDL_RenderPresent(game.renderer);
