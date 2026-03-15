@@ -1,0 +1,1 @@
+A graphical implementation of the classic word-guessing game built in C using the SDL2 library. This project offers multiple ways to play, whether you want a quick solo challenge or to face off against a friend locally.
